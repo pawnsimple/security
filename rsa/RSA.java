@@ -1,0 +1,56 @@
+import javax.crypto.Cipher;
+import java.security.*;
+
+//https://docs.oracle.com/javase/7/docs/api/javax/crypto/Cipher.html
+public class RSA {
+    /**
+     * Retorna um par de chaves RSA
+     * @return chaves públicas e privadas
+     */
+    public static KeyPair generateKeyPair(){
+        KeyPairGenerator keyPairGenerator = null;
+        try {
+            keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+            keyPairGenerator.initialize(2048);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return keyPairGenerator.generateKeyPair();
+    }
+
+    /**
+     * Retorna um array de bytes encriptado RSA dado uma string e uma chave pública.
+     * @param plaintext um texto
+     * @param key uma chave pública
+     * @return ciphertext
+     */
+    public static byte[] encrypt(String plaintext, PublicKey key){
+        byte[] ciphertext = null;
+        try {
+            Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+            ciphertext = cipher.doFinal(plaintext.getBytes());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ciphertext;
+    }
+
+    /**
+     * Retorna uma string dado RSA-encrypted string e uma chave privada.
+     * @param ciphertext um array de bytes RSA-encrypted 
+     * @param key uma chave privada RSA
+     * @return plaintext
+     */
+    public static String decrypt(byte[] ciphertext, PrivateKey key){
+        byte[] plaintext = null;
+        try {
+            Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding ");
+            cipher.init(Cipher.DECRYPT_MODE, key);
+            plaintext = cipher.doFinal(ciphertext);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new String(plaintext);
+    }
+}
