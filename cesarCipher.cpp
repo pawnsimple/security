@@ -33,8 +33,8 @@ int main() {
 	FILE *fp;
     char c;
     key = 5;
-    f=fopen("C:\\Users\\MisterMap\\Documents\\Seguranca\\input\\cesar\\1.input","rt");
-    fp = fopen("C:\\Users\\MisterMap\\Documents\\Seguranca\\output\\cesar\\saida.txt", "w+");
+    f=fopen("C:\\Users\\MisterMap\\Documents\\Security\\input\\cesar\\1.input","rt");
+    fp = fopen("C:\\Users\\MisterMap\\Documents\\Security\\output\\cesar\\saida.txt", "w+");
     char * temp;
     char  temp2;
     while((c=fgetc(f))!=EOF){
@@ -47,8 +47,8 @@ int main() {
 	fclose(f);
 
 	
-    f=fopen("C:\\Users\\MisterMap\\Documents\\Seguranca\\output\\cesar\\saida.txt","rt");
-    fp = fopen("C:\\Users\\MisterMap\\Documents\\Seguranca\\output\\cesar\\reverse\\saidaDescriptografada.txt", "w+");
+    f=fopen("C:\\Users\\MisterMap\\Documents\\Security\\output\\cesar\\saida.txt","rt");
+    fp = fopen("C:\\Users\\MisterMap\\Documents\\Security\\output\\cesar\\reverse\\saidaDescriptografada.txt", "w+");
     
     while((c=fgetc(f))!=EOF){
     	temp = Decipher(&c, key);
