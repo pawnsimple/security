@@ -11,7 +11,6 @@ public class VigenereCipher {
         String saidaTexto = "";
         for (int i = 0, j = 0; i < texto.length(); i++) {
             char c = texto.charAt(i);
-            //if (c < 'A' || c > 'Z') continue;
             saidaTexto += (char)((c + chave.charAt(j) ) % 256);
             j = ++j % chave.length();
         }
